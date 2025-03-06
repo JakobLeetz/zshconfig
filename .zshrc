@@ -1,73 +1,75 @@
-# If you come from bash you might have to change your $PATH.
-
-# Path to your oh-my-zsh installation.
-export PATH=/opt/homebrew/bin:$PATH
-export ZSH="/Users/jakob/.oh-my-zsh"
+# Set default user
 export DEFAULT_USER="jakob"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# Path configurations
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$PATH:/Users/jakob/Library/Python/3.9/bin"
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# Oh-My-Zsh setup
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
-
 plugins=(git macos)
-
 source $ZSH/oh-my-zsh.sh
 
+# Aliases
 alias ..="cd .."
-alias cd..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
+alias ~="cd ~" # `cd` is probably faster
 alias -- -="cd -"
 alias o="open ."
 
+# Python Aliases
 alias python="python3"
 alias pip="pip3"
 alias venv="python3 -m venv"
 
-alias ll="ls -la -G"
+# Git Aliases
 alias g="git"
 alias gp="git pull"
 alias gundo="git reset --soft HEAD~"
 alias gamend="git commit -av --amend --no-edit"
-alias zshconfig="code ~/.zshrc"
+
+# Brew Aliases
 alias install="brew install"
 alias uninstall="brew uninstall"
 
+# Other Aliases
+alias ll="ls -la -G"
+alias zshconfig="code ~/.zshrc"
 alias c='pygmentize -O style=monokai -f console256 -g'
+alias r1="ollama run deepseek-r1:8b"
 
-# FUNCTIONS
+# Functions
 function tp() {
-   mkdir -p "$(dirname "$1")" && touch "$1" ;
+    mkdir -p "$(dirname "$1")" && touch "$1"
 }
-function md(){
-    mkdir "$1"
-    cd "$1"
+
+function md() {
+    mkdir "$1" && cd "$1"
 }
-function hl (){
+
+function hl() {
     highlight -O rtf "$1" | pbcopy
-    echo "code is copied to clipboard"
+    echo "Code is copied to clipboard"
 }
 
-function code {
-    open -a '/Applications/Visual Studio Code.app' "$1"
+function code() {
+    open -a "/Applications/Visual Studio Code.app" "$1"
 }
 
-# Go to the root of the current git project, or just go one folder up
+# Go to root of Git project or one folder up
 function up() {
-  export git_dir="$(git rev-parse --show-toplevel 2> /dev/null)"
-  if [ -z $git_dir ]
-  then
-    cd ..
-  else
-    cd $git_dir
-  fi
+    local git_dir="$(git rev-parse --show-toplevel 2>/dev/null)"
+    if [[ -z "$git_dir" ]]; then
+        cd ..
+    else
+        cd "$git_dir"
+    fi
 }
-export PATH="$PATH:/Users/jakob/Library/Python/3.9/bin"
-export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
-eval "$(rbenv init - zsh)"
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+
+# Ruby setup
+#eval "$(rbenv init - zsh)"
