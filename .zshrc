@@ -29,9 +29,12 @@ alias venv="python3 -m venv"
 
 # Git Aliases
 alias g="git"
-alias gp="git pull"
+alias pull="git pull --rebase"
 alias gundo="git reset --soft HEAD~"
-alias gamend="git commit -av --amend --no-edit"
+alias amend="git commit -av --amend --no-edit"
+alias commit="git commit -m $1"
+alias add="git add"
+alias push="git push"
 
 # Brew Aliases
 alias install="brew install"
@@ -42,6 +45,7 @@ alias ll="ls -la -G"
 alias zshconfig="code ~/.zshrc"
 alias c='pygmentize -O style=monokai -f console256 -g'
 alias r1="ollama run deepseek-r1:8b"
+unalias md
 
 # Functions
 function tp() {
