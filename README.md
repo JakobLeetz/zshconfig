@@ -1,1 +1,1 @@
-basic .zshrc template
+my .zshrc template
