@@ -1,11 +1,7 @@
 # Set default user
 export DEFAULT_USER="jakob"
 
-# Path configurations
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="$PATH:/Users/jakob/Library/Python/3.9/bin"
-export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"
-export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$HOME/.rvm/bin:/Users/jakob/Library/Python/3.9/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:/System/Cryptexes/App/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/iTerm.app/Contents/Resources/utilities"
 
 # Oh-My-Zsh setup
 export ZSH="$HOME/.oh-my-zsh"
