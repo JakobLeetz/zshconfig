@@ -44,12 +44,23 @@ alias r1="ollama run deepseek-r1:8b"
 unalias md
 
 # Functions
-function tp() {
+function mt() {
     mkdir -p "$(dirname "$1")" && touch "$1"
 }
 
 function md() {
     mkdir "$1" && cd "$1"
+}
+
+function make() {
+    local first_param="$1"
+    shift
+    mkdir -p "$(dirname "$first_param")"
+    touch "$first_param" 
+    cd "$(dirname "$first_param")" > /dev/null 2>&1
+    for param in "$@"; do
+        touch "$param"
+    done
 }
 
 function hl() {
